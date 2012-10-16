@@ -111,13 +111,6 @@
 			remoteGlobalIDString = 0AB508B30767C87B006EA5CB;
 			remoteInfo = MusicVideo;
 		};
-		BC97C9F5152C1E5D00E7BA1E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 118F2DCE152BEC5600F3C167 /* Growl.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DD4939CC084BACA700D1CCCB;
-			remoteInfo = SMS;
-		};
 		BC97C9F7152C1E5D00E7BA1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 118F2DCE152BEC5600F3C167 /* Growl.xcodeproj */;
@@ -348,7 +341,6 @@
 				BC97C9EE152C1E5D00E7BA1E /* Smoke.growlView */,
 				BC97C9F0152C1E5D00E7BA1E /* Nano.growlView */,
 				BC97C9F4152C1E5D00E7BA1E /* MusicVideo.growlView */,
-				BC97C9F6152C1E5D00E7BA1E /* SMS.growlView */,
 				BC97C9F8152C1E5D00E7BA1E /* Unit tests.octest */,
 				BC97C9FA152C1E5D00E7BA1E /* com.company.application.GNTPClientService.xpc */,
 			);
@@ -517,13 +509,6 @@
 			remoteRef = BC97C9F3152C1E5D00E7BA1E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BC97C9F6152C1E5D00E7BA1E /* SMS.growlView */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SMS.growlView;
-			remoteRef = BC97C9F5152C1E5D00E7BA1E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		BC97C9F8152C1E5D00E7BA1E /* Unit tests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -683,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC1FE6BA15C0EFC400E27306 /* Debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prowl/Prowl-Prefix.pch";
@@ -698,7 +684,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC1FE6BC15C0EFC400E27306 /* Release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prowl/Prowl-Prefix.pch";
@@ -706,7 +692,6 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Application Support/Growl/Plugins";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = growlView;
 			};
 			name = Release;
@@ -735,7 +720,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC1FE6BB15C0EFC400E27306 /* Localization.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prowl/Prowl-Prefix.pch";
@@ -743,7 +728,6 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Application Support/Growl/Plugins";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = growlView;
 			};
 			name = Localization;

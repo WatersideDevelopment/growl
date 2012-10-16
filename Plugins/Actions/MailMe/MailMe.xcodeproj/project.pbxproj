@@ -104,13 +104,6 @@
 			remoteGlobalIDString = 0AB508B30767C87B006EA5CB;
 			remoteInfo = MusicVideo;
 		};
-		BCCB23BE15372B0F0064FD1D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCCB239315372B0F0064FD1D /* Growl.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DD4939CC084BACA700D1CCCB;
-			remoteInfo = SMS;
-		};
 		BCCB23C015372B0F0064FD1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCCB239315372B0F0064FD1D /* Growl.xcodeproj */;
@@ -277,7 +270,6 @@
 				BCCB23B915372B0F0064FD1D /* Smoke.growlView */,
 				BCCB23BB15372B0F0064FD1D /* Nano.growlView */,
 				BCCB23BD15372B0F0064FD1D /* MusicVideo.growlView */,
-				BCCB23BF15372B0F0064FD1D /* SMS.growlView */,
 				BCCB23C115372B0F0064FD1D /* Unit tests.octest */,
 				BCCB23C315372B0F0064FD1D /* com.company.application.GNTPClientService.xpc */,
 			);
@@ -445,13 +437,6 @@
 			fileType = wrapper.cfbundle;
 			path = MusicVideo.growlView;
 			remoteRef = BCCB23BC15372B0F0064FD1D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BCCB23BF15372B0F0064FD1D /* SMS.growlView */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SMS.growlView;
-			remoteRef = BCCB23BE15372B0F0064FD1D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		BCCB23C115372B0F0064FD1D /* Unit tests.octest */ = {
@@ -683,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC1FE70D15C0F08B00E27306 /* Release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
