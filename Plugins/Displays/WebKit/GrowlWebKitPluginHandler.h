@@ -3,17 +3,17 @@
 //  Growl
 //
 //  Created by JKP on 03/11/2005.
-//	Copyright 2005Ð2011 The Growl Project. All rights reserved.
+//	Copyright 2005â€“2011 The Growl Project. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
 
-@interface GrowlWebKitPluginHandler : GrowlAbstractSingletonObject <GrowlPluginHandler> {
+@interface GrowlWebKitPluginHandler : NSObject <GrowlPluginHandler> {
 
 }
++ (GrowlWebKitPluginHandler *)sharedInstance;
 
-- (id) initSingleton;
 - (BOOL) loadPluginAtPath:(NSString *)path;
 
 @end

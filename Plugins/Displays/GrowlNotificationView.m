@@ -6,8 +6,8 @@
 //  Copyright 2005-2006  Jamie Kirkpatrick. All rights reserved.
 //
 
-#import "GrowlNotificationView.h"
-
+#import <GrowlPlugins/GrowlNotificationView.h>
+#import "GrowlDefinesInternal.h"
 
 @implementation GrowlNotificationView
 
@@ -67,9 +67,16 @@
 }
 
 - (void) mouseUp:(NSEvent *)event {
-	mouseOver = NO;
-	if (target && action && [target respondsToSelector:action])
-		[target performSelector:action withObject:self];
+	if([event clickCount] == 1) {
+        mouseOver = NO;
+
+        if (target && action && [target respondsToSelector:action])
+            [target performSelector:action withObject:self];
+    }
+}
+
+- (void)rightMouseUp:(NSEvent *)theEvent {
+    [self clickedCloseBox:self];
 }
 
 static NSButton *gCloseButton;
@@ -80,8 +87,8 @@ static NSButton *gCloseButton;
 	    [gCloseButton setBordered:NO];
 	    [gCloseButton setButtonType:NSMomentaryChangeButton];
 	    [gCloseButton setImagePosition:NSImageOnly];
-	    [gCloseButton setImage:[NSImage imageNamed:@"closebox.png"]];
-	    [gCloseButton setAlternateImage:[NSImage imageNamed:@"closebox_pressed.png"]];
+	    [gCloseButton setImage:[NSImage imageNamed:@"closebox"]];
+	    [gCloseButton setAlternateImage:[NSImage imageNamed:@"closebox_pressed"]];
 	}
 	return gCloseButton;
 }
@@ -99,8 +106,9 @@ static NSButton *gCloseButton;
 	 * so do a re-display on the next run loop.
 	 */
 	[self performSelector:@selector(display)
-			   withObject:nil
-			   afterDelay:0];
+				  withObject:nil
+				  afterDelay:0
+					  inModes:[NSArray arrayWithObjects:NSRunLoopCommonModes, NSEventTrackingRunLoopMode, nil]];
 	
 	if (([[NSApp currentEvent] modifierFlags] & NSAlternateKeyMask) != 0) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:GROWL_CLOSE_ALL_NOTIFICATIONS
@@ -145,5 +153,11 @@ static NSButton *gCloseButton;
 - (void) setIcon:(NSImage *)anIcon {
 }
 - (void) sizeToFit {};
+
+-(NSDictionary*)configurationDict {
+	if([[[self window] windowController] respondsToSelector:@selector(configurationDict)])
+		return [[[self window] windowController] configurationDict];
+	return nil;
+}
 
 @end

@@ -8,10 +8,10 @@
 // This file is under the BSD License, refer to License.txt for details
 
 
+#import <GrowlPlugins/GrowlDisplayPlugin.h>
 #import "GrowlApplicationTicket.h"
 #import "GrowlNotificationTicket.h"
 #import "GrowlDefines.h"
-#import "GrowlDisplayPlugin.h"
 #import "NSStringAdditions.h"
 #import "NSWorkspaceAdditions.h"
 #import "GrowlPathUtilities.h"
@@ -27,6 +27,9 @@
 #pragma mark -
 
 @implementation GrowlApplicationTicket
+@synthesize appID;
+@synthesize appPath;
+@synthesize hostName;
 @synthesize appNameHostName;
 @synthesize isLocalHost;
 
@@ -277,7 +280,7 @@
 - (NSString *) path {
 	NSString *destDir = [GrowlPathUtilities growlSupportDirectory];
 	destDir = [destDir stringByAppendingPathComponent:@"Tickets"];
-	destDir = [destDir stringByAppendingPathComponent:[appName stringByAppendingPathExtension:@"growlTicket"]];
+	destDir = [destDir stringByAppendingPathComponent:[appNameHostName stringByAppendingPathExtension:@"growlTicket"]];
 	return destDir;
 }
 
@@ -455,7 +458,7 @@
 #pragma mark -
 
 - (NSString *) description {
-	return [NSString stringWithFormat:@"<GrowlApplicationTicket: %p>{\n\tApplicationName: \"%@\"\n\ticon data length: %li\n\tAll Notifications: %@\n\tDefault Notifications: %@\n\tAllowed Notifications: %@\n\tUse Defaults: %@\n}",
+	return [NSString stringWithFormat:@"<GrowlApplicationTicket: %p>{\n\tApplicationName: \"%@\"\n\ticon data length: %lu\n\tAll Notifications: %@\n\tDefault Notifications: %@\n\tAllowed Notifications: %@\n\tUse Defaults: %@\n}",
 		self, appName, [iconData length], allNotifications, defaultNotifications, [self allowedNotifications], ( useDefaults ? @"YES" : @"NO" )];
 }
 
@@ -765,7 +768,42 @@
 }
 
 - (NSComparisonResult) caseInsensitiveCompare:(GrowlApplicationTicket *)aTicket {
+   if(!hostName && ![aTicket hostName]){
+      return [[self applicationName] caseInsensitiveCompare:[aTicket applicationName]];
+   }else if(hostName && ![aTicket hostName]){
+      return NSOrderedDescending;
+   }else if(!hostName && [aTicket hostName]){
+      return NSOrderedAscending;
+   }else if(hostName && [aTicket hostName]){
+      if([hostName caseInsensitiveCompare:[aTicket hostName]] == NSOrderedSame)
+         return [[self applicationName] caseInsensitiveCompare:[aTicket applicationName]];
+      else
+         return [hostName caseInsensitiveCompare:[aTicket hostName]];
+   }
 	return [appNameHostName caseInsensitiveCompare:[aTicket appNameHostName]];
+}
+
+- (NSDictionary*)registrationFormatDictionary
+{
+   
+   NSMutableDictionary *regDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:appName, GROWL_APP_NAME,
+                                                                                    allNotificationNames, GROWL_NOTIFICATIONS_ALL,
+                                                                                    defaultNotifications, GROWL_NOTIFICATIONS_DEFAULT,
+                                                                                    iconData, GROWL_APP_ICON_DATA, nil];
+   
+   if (hostName && ![hostName isLocalHost])
+      [regDict setObject:hostName forKey:GROWL_NOTIFICATION_GNTP_SENT_BY];
+   
+   if (humanReadableNames)
+		[regDict setObject:humanReadableNames forKey:GROWL_NOTIFICATIONS_HUMAN_READABLE_NAMES];
+   
+	if (notificationDescriptions)
+		[regDict setObject:notificationDescriptions forKey:GROWL_NOTIFICATIONS_DESCRIPTIONS];
+   
+	if (appId)
+		[regDict setObject:appId forKey:GROWL_APP_ID];
+   
+   return regDict;
 }
 
 #pragma mark Notification Accessors

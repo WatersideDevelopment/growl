@@ -1,5 +1,5 @@
 //
-//  GrowliCalPrefsController.h
+//  
 //  Growl
 //
 //  Created by Kevin Ballard on 9/7/04.
@@ -8,12 +8,16 @@
 //  Copyright 2004 TildeSoft. All rights reserved.
 //
 
-#import <PreferencePanes/PreferencePanes.h>
+#import <GrowlPlugins/GrowlPluginPreferencePane.h>
 
-@interface GrowliCalPrefsController : NSPreferencePane {
+@interface GrowliCalPrefsController : GrowlPluginPreferencePane {
 	IBOutlet NSPopUpButton	*overall_color;
 	IBOutlet NSSlider		*slider_opacity;
 }
+
+@property (nonatomic, retain) NSString *colorLabel;
+@property (nonatomic, retain) NSArray *colorNames;
+
 - (CGFloat) duration;
 - (void) setDuration:(CGFloat)value;
 - (CGFloat) opacity;

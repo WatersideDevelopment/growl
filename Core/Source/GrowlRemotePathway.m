@@ -25,6 +25,12 @@
 	}
 }
 
+- (GrowlNotificationResult)resultOfPostNotificationWithDictionary:(bycopy NSDictionary *)notification {
+	if(!enabled)
+		return GrowlNotificationResultDisabled;
+	return [super resultOfPostNotificationWithDictionary:notification];
+}
+
 #pragma mark -
 
 @synthesize enabled;

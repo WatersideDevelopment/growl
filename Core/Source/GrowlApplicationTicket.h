@@ -72,6 +72,9 @@
 - (void) setIconData:(NSData *) inIconData;
 
 - (NSString *) applicationName;
+@property (nonatomic, readonly) NSString *appID;
+@property (nonatomic, readonly) NSString *appPath;
+@property (nonatomic, readonly) NSString *hostName;
 @property (nonatomic, readonly) NSString* appNameHostName;
 @property (nonatomic, readonly) BOOL isLocalHost;
 
@@ -104,6 +107,8 @@
 - (void) setAllowedNotificationsToDefault;
 
 - (BOOL) isNotificationAllowed:(NSString *) name;
+
+- (NSDictionary*)registrationFormatDictionary;
 
 #pragma mark Notification accessors
 - (NSArray *) notifications;

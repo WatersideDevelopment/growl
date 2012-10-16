@@ -5,11 +5,11 @@
 //  Created by Nelson Elhage on Wed Jun 09 2004.
 //  Name changed from KABubbleWindowView.h by Justin Burns on Fri Nov 05 2004.
 //	Adapted for iCal by Takumi Murayama on Thu Aug 17 2006.
-//  Copyright (c) 2004Ð2011 The Growl Project. All rights reserved.
+//  Copyright (c) 2004â€“2011 The Growl Project. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "GrowlNotificationView.h"
+#import <GrowlPlugins/GrowlNotificationView.h>
 
 @interface GrowliCalWindowView : GrowlNotificationView {
 	BOOL				haveText;
@@ -37,6 +37,8 @@
 	NSTextContainer		*titleContainer;
 	NSRange				titleRange;
 }
+
+- (id) initWithFrame:(NSRect) frame configurationDict:(NSDictionary*)configDict;
 
 - (void) setPriority:(int)priority;
 - (void) setIcon:(NSImage *)icon;

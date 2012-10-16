@@ -61,7 +61,7 @@
 	
 	[clipPath release];
 	clipPath = [[NSBezierPath bezierPathWithRoundedRect:[self bounds] xRadius:8 yRadius:8] retain];
-
+    
 	[strokePath release];
 	NSRect insetRect = NSInsetRect([self bounds], 1, 1);
 	strokePath = [[NSBezierPath bezierPathWithRoundedRect:insetRect xRadius:8 yRadius:8] retain];
@@ -85,16 +85,16 @@
 	if (notificationImage) {
 		imageRect.size = [notificationImage size];
 	}
-
+    
 	NSRect titleRect = NSZeroRect;
 	if (notificationTitle) {
 		NSSize titleSize = [notificationTitle sizeWithAttributes:notificationTitleAttrs];
 		titleRect.size = titleSize;
 	}
-
-	double baseWidth = imageRect.size.width + (MIST_TEXT_PADDING * 2);
+    
+	CGFloat baseWidth = imageRect.size.width + (MIST_TEXT_PADDING * 2);
 	
-	NSRect textRect = [notificationText boundingRectWithSize:NSMakeSize((CGFloat)(MIST_WIDTH - baseWidth), 1e7) options:(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin) attributes:notificationTextAttrs];
+	NSRect textRect = [notificationText boundingRectWithSize:NSMakeSize((CGFloat)(MIST_WIDTH - baseWidth), (CGFloat)(1e7)) options:(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin) attributes:notificationTextAttrs];
 	
 	NSRect myFrame = self.frame;
 	myFrame.size.width = MIST_WIDTH;
@@ -110,10 +110,10 @@
 	[[NSGraphicsContext currentContext] saveGraphicsState];
 	
 	if (selected) {
-		[[NSColor colorWithDeviceWhite:0.0 alpha:1] set];		
+		[[NSColor colorWithDeviceWhite:0.0f alpha:1.0f] set];		
 	}
 	else {
-		[[NSColor colorWithDeviceWhite:0.0 alpha:0.75] set];
+		[[NSColor colorWithDeviceWhite:0.0f alpha:0.75f] set];
 	}
 	[clipPath fill];
 	
@@ -145,9 +145,9 @@
 	
 	// Draw text.
 	if (notificationText) {
-		double baseWidth = imageRect.size.width + (MIST_TEXT_PADDING * 2);
+		CGFloat baseWidth = imageRect.size.width + (MIST_TEXT_PADDING * 2);
 		
-		NSRect textRect = [notificationText boundingRectWithSize:NSMakeSize((CGFloat)(MIST_WIDTH - baseWidth), 1e7) options:(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin) attributes:notificationTextAttrs];
+		NSRect textRect = [notificationText boundingRectWithSize:NSMakeSize((CGFloat)(MIST_WIDTH - baseWidth), (CGFloat)1e7) options:(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin) attributes:notificationTextAttrs];
 		textRect.origin.x = imageRect.origin.x + imageRect.size.width + MIST_TEXT_PADDING;
 		textRect.origin.y = titleRect.origin.y + titleRect.size.height + (notificationTitle ? MIST_TEXT_LINESPACE * 2 : MIST_PADDING);
 		
@@ -177,13 +177,13 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-   if(([theEvent modifierFlags] & NSAlternateKeyMask) != 0){
-      if([[self delegate] respondsToSelector:@selector(closeAllNotifications)])
-         [[self delegate] closeAllNotifications];
-   }else{
-      if ([[self delegate] respondsToSelector:@selector(mistViewDismissed:)])
-         [[self delegate] mistViewDismissed:NO];
-   }
+    if(([theEvent modifierFlags] & NSAlternateKeyMask) != 0){
+        if([[self delegate] respondsToSelector:@selector(closeAllNotifications)])
+            [[self delegate] closeAllNotifications];
+    }else{
+        if ([[self delegate] respondsToSelector:@selector(mistViewDismissed:)])
+            [[self delegate] mistViewDismissed:NO];
+    }
 }
 
 @end

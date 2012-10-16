@@ -16,9 +16,9 @@
 
 extern NSString *GrowlPositionPickerChangedSelectionNotification;
 
-extern NSString *NSStringFromGrowlPositionOrigin(enum GrowlPositionOrigin pos);
+extern NSString *NSStringFromGrowlPositionOrigin(GrowlPositionOrigin pos);
 
-@interface GrowlPositionPicker : NSView {	
+@interface GrowlPositionPicker : NSControl {	
 	NSUInteger					selectedPosition;
 	NSUInteger					lastPosition;
 	NSUInteger					rolloverPosition;
@@ -32,6 +32,7 @@ extern NSString *NSStringFromGrowlPositionOrigin(enum GrowlPositionOrigin pos);
 }
 
 @property (nonatomic, assign) NSUInteger selectedPosition;
+@property (nonatomic, assign) BOOL enabled;
 
 + (NSImage*)imageForCurrentOS;
 

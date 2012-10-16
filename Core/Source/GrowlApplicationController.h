@@ -9,45 +9,37 @@
 // This file is under the BSD License, refer to License.txt for details
 
 #import <Foundation/Foundation.h>
+#import "GrowlDefinesInternal.h"
 #import "GrowlApplicationBridge.h"
-#import "GrowlAbstractSingletonObject.h"
 
-@class GrowlNotificationCenter, GrowlTicketController, GrowlMenu, GrowlFirstLaunchWindowController, GrowlPreferencePane;
+@class GrowlNotificationCenter, GrowlMenu, GrowlFirstLaunchWindowController, GrowlPreferencePane;
 
-typedef enum {
-	GrowlNotificationResultPosted,
-	GrowlNotificationResultNotRegistered,
-	GrowlNotificationResultDisabled
-} GrowlNotificationResult;
+#if defined(MAC_OS_X_VERSION_10_8) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_8
+@interface GrowlApplicationNotificationCenterDelegate : NSObject<NSUserNotificationCenterDelegate> {
+}
 
-@interface GrowlApplicationController : GrowlAbstractSingletonObject {
-	GrowlTicketController		*ticketController;
+@end
+#endif
 
+@interface GrowlApplicationController : NSObject<NSApplicationDelegate> {
 	// local GrowlNotificationCenter
 	NSConnection				*growlNotificationCenterConnection;
-	GrowlNotificationCenter		*growlNotificationCenter;
-
-	GrowlDisplayPlugin			*defaultDisplayPlugin;
-
-	BOOL						growlIsEnabled;
-	BOOL						growlFinishedLaunching;
-	BOOL						quitAfterOpen;
-	BOOL						enableForward;
-	NSArray						*destinations;
-
-	NSDictionary				*versionInfo;
-	NSImage						*growlIcon;
-	NSData						*growlIconData;
+	GrowlNotificationCenter	*growlNotificationCenter;
 	
-	CFRunLoopTimerRef			updateTimer;
-	    
-    GrowlMenu                   *statusMenu;
-    
-    GrowlFirstLaunchWindowController *firstLaunchWindow;
-    
-    NSString                    *audioDeviceIdentifier;
+	BOOL							growlFinishedLaunching;
+	
+	NSDictionary				*versionInfo;
+	
+	GrowlMenu					*statusMenu;
+	
+	GrowlFirstLaunchWindowController *firstLaunchWindow;
+	
+#if defined(MAC_OS_X_VERSION_10_8) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_8
+   GrowlApplicationNotificationCenterDelegate *appleNotificationDelegate;
+#endif
+   NSString						*urlOnLaunch;
    
-   GrowlPreferencePane *preferencesWindow;
+   GrowlPreferencePane		*preferencesWindow;
 }
 
 + (GrowlApplicationController *) sharedController;
@@ -73,11 +65,8 @@ typedef enum {
 #pragma mark Accessors
 
 //To be used by the GAB pathway if it can't register its connection (which means that there's already a GHA running).
-- (BOOL) quitAfterOpen;
-- (void) setQuitAfterOpen:(BOOL)flag;
 - (IBAction)quitWithWarning:(id)sender;
 
-@property (retain) NSString                    *audioDeviceIdentifier;
 @property (retain) GrowlMenu                   *statusMenu;
 
 @end

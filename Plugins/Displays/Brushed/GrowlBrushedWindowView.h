@@ -3,11 +3,11 @@
 //  Display Plugins
 //
 //  Created by Ingmar Stein on 12/01/2004.
-//  Copyright 2004Ð2011 The Growl Project. All rights reserved.
+//  Copyright 2004â€“2011 The Growl Project. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-#import "GrowlNotificationView.h"
+#import <GrowlPlugins/GrowlNotificationView.h>
 
 @interface GrowlBrushedWindowView : GrowlNotificationView {
 	BOOL				haveTitle;
@@ -32,6 +32,8 @@
 	NSTextContainer		*titleContainer;
 	NSRange				titleRange;
 }
+
+- (id) initWithFrame:(NSRect)frameRect configurationDict:(NSDictionary*)configDict;
 
 - (void) setIcon:(NSImage *)icon;
 - (void) setTitle:(NSString *)title;

@@ -205,6 +205,17 @@ NSData *ComputeHash(NSData *data, GrowlGNTPHashingAlgorithm algorithm)
 	return self;
 }
 
+- (void)dealloc
+{
+    [_encryptionKey release];
+    [_keyHash release];
+    [_password release];
+    [_salt release];
+    [_iv release];
+
+    [super dealloc];
+}
+
 + (NSData *)generateSalt:(int)length
 {
     unsigned char *buffer;
@@ -225,7 +236,8 @@ NSData *ComputeHash(NSData *data, GrowlGNTPHashingAlgorithm algorithm)
 
 - (void)generateKey
 {
-	NSMutableData *keyBasis = [NSMutableData dataWithData:[[self password] dataUsingEncoding:NSUTF8StringEncoding]];
+	//NSMutableData *keyBasis = [NSMutableData dataWithData:[[self password] dataUsingEncoding:NSUTF8StringEncoding]];
+   NSMutableData *keyBasis = [[[[self password] dataUsingEncoding:NSUTF8StringEncoding] mutableCopy] autorelease];
 	[keyBasis appendData:[self salt]];
 	NSData *keyBytes = ComputeHash(keyBasis, [self hashAlgorithm]);
 	[self setEncryptionKey:keyBytes];
@@ -352,18 +364,20 @@ NSData *ComputeHash(NSData *data, GrowlGNTPHashingAlgorithm algorithm)
 		default:
 			break;
 	}
-	unsigned char *iv = (unsigned char *)calloc(blockSize, sizeof(unsigned char));
-	if (iv) {
-		bzero(iv, blockSize * sizeof(unsigned char));
-		//unsigned char evpKey[EVP_MAX_KEY_LENGTH] = {"\0"};
-		if (cipher) {
+	if(blockSize > 0){
+		unsigned char *iv = (unsigned char *)calloc(blockSize, sizeof(unsigned char));
+		if (iv) {
+			bzero(iv, blockSize * sizeof(unsigned char));
+			//unsigned char evpKey[EVP_MAX_KEY_LENGTH] = {"\0"};
+			if (cipher) {
             /* TODO: Find replacement for EVP in OpenSSL*/
             
-			//Cast explanation: EVP_BytesToKey takes an int for the length, but NSData's length method returns NSUInteger. As long as encryption keys are created by hashing strings, they are not likely to ever be large enough for their lengths to exceed the range of an int.
-			//EVP_BytesToKey(cipher, EVP_md5(), NULL, (const unsigned char*)[[self encryptionKey] bytes], (int)[[self encryptionKey] length], 1, evpKey, iv);
+				//Cast explanation: EVP_BytesToKey takes an int for the length, but NSData's length method returns NSUInteger. As long as encryption keys are created by hashing strings, they are not likely to ever be large enough for their lengths to exceed the range of an int.
+				//EVP_BytesToKey(cipher, EVP_md5(), NULL, (const unsigned char*)[[self encryptionKey] bytes], (int)[[self encryptionKey] length], 1, evpKey, iv);
+			}
+			
+			ivData = [NSData dataWithBytesNoCopy:iv length:blockSize freeWhenDone:YES];
 		}
-
-		ivData = [NSData dataWithBytesNoCopy:iv length:blockSize freeWhenDone:YES];
 	}
 
 	return ivData;

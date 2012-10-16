@@ -3,18 +3,30 @@
 //  Growl
 //
 //  Created by JKP on 03/11/2005.
-//  Copyright 2005Ð2011 The Growl Project. All rights reserved.
+//  Copyright 2005â€“2011 The Growl Project. All rights reserved.
 //
 
 #import "GrowlWebKitPluginHandler.h"
 #import "GrowlWebKitDisplayPlugin.h"
 #import "GrowlPluginController.h"
+#import "GrowlWebKitImageProtocol.h"
 
 @implementation GrowlWebKitPluginHandler
 
-- (id) initSingleton {
-	if ((self = [super initSingleton]))
-		[[GrowlPluginController sharedController] addPluginHandler:self forPluginTypes:[NSSet setWithObject:GROWL_STYLE_EXTENSION]];
++ (GrowlWebKitPluginHandler *)sharedInstance {
+    static GrowlWebKitPluginHandler *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
+}
+
+- (id) init {
+	if ((self = [super init])) {
+		
+		[GrowlWebKitImageProtocol registerProtocol];
+	}
 
 	return self;
 }
