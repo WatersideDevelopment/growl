@@ -87,10 +87,14 @@
 			NSString *username = [defaultSMTPAccount objectForKey:@"Username"];
 			NSString *hostname = [defaultSMTPAccount objectForKey:@"Hostname"];
 			NSNumber *port = [defaultSMTPAccount objectForKey:@"PortNumber"];
-			NSString *userAtHostPort = [NSString stringWithFormat:
-				(port != nil) ? @"%@@%@:%@" : @"%@@%@",
-				username, hostname, port];
-
+            NSString *userAtHostPort;
+            if (port != nil) {
+                userAtHostPort = [NSString stringWithFormat:@"%@@%@:%@",
+                                  username, hostname, port];
+            } else {
+                userAtHostPort = [NSString stringWithFormat:@"%@@%@",
+                                  username, hostname];
+            }
 			BOOL success = NO;
 
 			OSStatus err;

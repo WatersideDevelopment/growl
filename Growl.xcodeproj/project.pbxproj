@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		95E17B8F085E216A00990AB3 /* hg revision */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 95E17B99085E21C400990AB3 /* Build configuration list for PBXAggregateTarget "hg revision" */;
-			buildPhases = (
-				95E17B8E085E216A00990AB3 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "hg revision";
-			productName = SVNRevision;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		070C5DB009A7978F004F1E8C /* GrowlPathwayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070C5DAE09A7978F004F1E8C /* GrowlPathwayController.m */; };
 		071426120910D4EC00F7C755 /* GrowlDisplayWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07803B8F08E7E75600299E08 /* GrowlDisplayWindowController.m */; };
@@ -390,13 +376,6 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		31CDCFF510882EF400984B53 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95E17B8F085E216A00990AB3;
-			remoteInfo = "hg revision";
-		};
 		343345630790E25B00C84B15 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -473,27 +452,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 95FC346D07E0458E00BD8674;
 			remoteInfo = Brushed;
-		};
-		95E17BC9085E22B800990AB3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95E17B8F085E216A00990AB3;
-			remoteInfo = SVNRevision;
-		};
-		95E17BEE085E24B500990AB3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95E17B8F085E216A00990AB3;
-			remoteInfo = SVNRevision;
-		};
-		BC67F48D14315F11001A64C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95E17B8F085E216A00990AB3;
-			remoteInfo = "hg revision";
 		};
 		DD493C92084BE7FB00D1CCCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2612,7 +2570,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				31CDCFF610882EF400984B53 /* PBXTargetDependency */,
 			);
 			name = "Unit tests";
 			productName = "Unit tests";
@@ -2632,7 +2589,6 @@
 				95E9DE620847B0380057425A /* PBXBuildRule */,
 			);
 			dependencies = (
-				95E17BCA085E22B800990AB3 /* PBXTargetDependency */,
 			);
 			name = Growl.framework;
 			productName = Growl.framework;
@@ -2690,7 +2646,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				95E17BEF085E24B500990AB3 /* PBXTargetDependency */,
 				955430E807E04683005534FA /* PBXTargetDependency */,
 				343345640790E25B00C84B15 /* PBXTargetDependency */,
 				E14410F20A9407680063C4DC /* PBXTargetDependency */,
@@ -2755,7 +2710,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC67F48E14315F11001A64C3 /* PBXTargetDependency */,
 			);
 			name = GNTPClientService;
 			productName = GNTP;
@@ -2827,7 +2781,6 @@
 				0A7F5FB70767C70600E1C1E4 /* MailMe */,
 				0A7F5FE80767C7B300E1C1E4 /* MusicVideo */,
 				DD4939CB084BACA700D1CCCB /* SMS */,
-				95E17B8F085E216A00990AB3 /* hg revision */,
 				31E184D51084628D0011C78B /* Unit tests */,
 				FF93C8E214218EB3007EAC43 /* GNTPClientService */,
 			);
@@ -3194,19 +3147,6 @@
 			shellPath = /bin/sh;
 			shellScript = "genstrings -macRoman -o Plugins/Displays/SMS/en.lproj Plugins/Displays/SMS/*.h Plugins/Displays/SMS/*.m";
 		};
-		95E17B8E085E216A00990AB3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "source generateHgRevision.sh";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3508,11 +3448,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		31CDCFF610882EF400984B53 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95E17B8F085E216A00990AB3 /* hg revision */;
-			targetProxy = 31CDCFF510882EF400984B53 /* PBXContainerItemProxy */;
-		};
 		343345640790E25B00C84B15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0A7F5EC40767C2A600E1C1E4 /* Bubbles */;
@@ -3557,21 +3492,6 @@
 			isa = PBXTargetDependency;
 			target = 95FC346D07E0458E00BD8674 /* Brushed */;
 			targetProxy = 955430E707E04683005534FA /* PBXContainerItemProxy */;
-		};
-		95E17BCA085E22B800990AB3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95E17B8F085E216A00990AB3 /* hg revision */;
-			targetProxy = 95E17BC9085E22B800990AB3 /* PBXContainerItemProxy */;
-		};
-		95E17BEF085E24B500990AB3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95E17B8F085E216A00990AB3 /* hg revision */;
-			targetProxy = 95E17BEE085E24B500990AB3 /* PBXContainerItemProxy */;
-		};
-		BC67F48E14315F11001A64C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95E17B8F085E216A00990AB3 /* hg revision */;
-			targetProxy = BC67F48D14315F11001A64C3 /* PBXContainerItemProxy */;
 		};
 		DD493C93084BE7FB00D1CCCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4008,9 +3928,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 315C88BB1068F9A200880530 /* Localization.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Localization;
 		};
@@ -4018,7 +3937,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 315C88BB1068F9A200880530 /* Localization.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4035,7 +3954,6 @@
 				"OTHER_CFLAGS[arch=ppc64]" = "-fvisibility=default";
 				"OTHER_CFLAGS[arch=x86_64]" = "-fvisibility=default";
 				PRODUCT_NAME = Growl;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Localization;
 		};
@@ -4286,26 +4204,6 @@
 			};
 			name = Localization;
 		};
-		315C88E71068F9AA00880530 /* Localization */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 315C88BB1068F9A200880530 /* Localization.xcconfig */;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = SVNRevision;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Localization;
-		};
 		31E184D81084628E0011C78B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93EA7FFD136908B100AB89AE /* Debug.xcconfig */;
@@ -4416,46 +4314,6 @@
 				);
 				PRODUCT_NAME = Nano;
 				WRAPPER_EXTENSION = growlView;
-			};
-			name = Release;
-		};
-		95E17B9A085E21C400990AB3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93EA7FFD136908B100AB89AE /* Debug.xcconfig */;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = SVNRevision;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Debug;
-		};
-		95E17B9B085E21C400990AB3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93EA7FFE136908B100AB89AE /* Release.xcconfig */;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = SVNRevision;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 			};
 			name = Release;
 		};
@@ -4791,7 +4649,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93EA7FFD136908B100AB89AE /* Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4808,7 +4666,6 @@
 				"OTHER_CFLAGS[arch=ppc64]" = "-fvisibility=default";
 				"OTHER_CFLAGS[arch=x86_64]" = "-fvisibility=default";
 				PRODUCT_NAME = Growl;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -4816,7 +4673,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93EA7FFE136908B100AB89AE /* Release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PREFIX_HEADER = Core/Source/Growl_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4830,7 +4687,6 @@
 				"OTHER_CFLAGS[arch=ppc64]" = "-fvisibility=default";
 				"OTHER_CFLAGS[arch=x86_64]" = "-fvisibility=default";
 				PRODUCT_NAME = Growl;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -4896,9 +4752,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93EA7FFD136908B100AB89AE /* Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -4906,9 +4761,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 93EA7FFE136908B100AB89AE /* Release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -5058,16 +4912,6 @@
 				93BC379C095A662B0002B365 /* Debug */,
 				315C88E31068F9AA00880530 /* Localization */,
 				93BC379D095A662B0002B365 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		95E17B99085E21C400990AB3 /* Build configuration list for PBXAggregateTarget "hg revision" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95E17B9A085E21C400990AB3 /* Debug */,
-				315C88E71068F9AA00880530 /* Localization */,
-				95E17B9B085E21C400990AB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
