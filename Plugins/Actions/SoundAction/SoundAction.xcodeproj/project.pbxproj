@@ -102,13 +102,6 @@
 			remoteGlobalIDString = 0AB508B30767C87B006EA5CB;
 			remoteInfo = MusicVideo;
 		};
-		BCAD79A0151265DB0052EB51 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCAD7972151265DB0052EB51 /* Growl.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DD4939CC084BACA700D1CCCB;
-			remoteInfo = SMS;
-		};
 		BCAD79A2151265DB0052EB51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCAD7972151265DB0052EB51 /* Growl.xcodeproj */;
@@ -283,7 +276,6 @@
 				BCAD7999151265DB0052EB51 /* Smoke.growlView */,
 				BCAD799B151265DB0052EB51 /* Nano.growlView */,
 				BCAD799F151265DB0052EB51 /* MusicVideo.growlView */,
-				BCAD79A1151265DB0052EB51 /* SMS.growlView */,
 				BCAD79A3151265DB0052EB51 /* Unit tests.octest */,
 				BCAD79A5151265DB0052EB51 /* com.company.application.GNTPClientService.xpc */,
 			);
@@ -452,13 +444,6 @@
 			remoteRef = BCAD799E151265DB0052EB51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BCAD79A1151265DB0052EB51 /* SMS.growlView */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SMS.growlView;
-			remoteRef = BCAD79A0151265DB0052EB51 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		BCAD79A3151265DB0052EB51 /* Unit tests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -596,7 +581,7 @@
 			baseConfigurationReference = BC1FE6F115C0F04700E27306 /* Localization.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -606,7 +591,6 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = growlView;
 			};
 			name = Localization;
@@ -663,7 +647,7 @@
 			baseConfigurationReference = BC1FE6F015C0F04700E27306 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -673,7 +657,6 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = growlView;
 			};
 			name = Debug;
@@ -683,7 +666,7 @@
 			baseConfigurationReference = BC1FE6F215C0F04700E27306 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: The Growl Project, LLC";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -693,7 +676,6 @@
 				INFOPLIST_PREFIX_HEADER = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = growlView;
 			};
 			name = Release;

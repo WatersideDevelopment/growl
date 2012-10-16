@@ -4,7 +4,5 @@
 #define GROWL_VERSION 2.0
 #define GROWL_VERSION_STRING "2.0"
 
-#include "VCSData.h"
-
 #undef COMMENT_1
 #undef COMMENT_2
